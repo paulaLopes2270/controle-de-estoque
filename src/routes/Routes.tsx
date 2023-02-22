@@ -1,27 +1,32 @@
 import { FC } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home, Admin } from "../Pages";
+import { RoutesContainer } from "./style";
 
 type IMainRoutes = {
-	header?: JSX.Element;
 	footer?: JSX.Element;
+	sideBar?: JSX.Element;
 };
 
-export const MainRoutes: FC<IMainRoutes> = ({ header, footer }) => {
+export const MainRoutes: FC<IMainRoutes> = ({ sideBar, footer }) => {
 	return (
 		<Router>
-			{header}
-			<Routes>
-				<Route
-					path="/"
-					element={<Home />}
-				/>
-				<Route
-					path="/admin"
-					element={<Admin />}
-				/>
-			</Routes>
-			{footer}
+			<RoutesContainer>
+				{sideBar}
+				<div>
+					<Routes>
+						<Route
+							path="/"
+							element={<Home />}
+						/>
+						<Route
+							path="/admin"
+							element={<Admin />}
+						/>
+					</Routes>
+					{footer}
+				</div>
+			</RoutesContainer>
 		</Router>
 	);
 };
