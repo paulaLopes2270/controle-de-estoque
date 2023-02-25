@@ -1,7 +1,11 @@
+import { CentralizerContainer } from "../../styledComponents";
+import { ProductTable } from "./components";
+
 export const Home = () => {
 	return (
-		<div>
+		<CentralizerContainer>
 			<h1>Home</h1>
-		</div>
+			<ProductTable />
+		</CentralizerContainer>
 	);
 };

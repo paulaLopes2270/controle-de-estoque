@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const SidebarElement = styled.aside`
 	position: relative;
 	height: 100vh;
-	width: 50px;
+	min-height: 100%;
+	min-width: 50px;
 	z-index: 1000;
 `;
 
@@ -31,6 +32,7 @@ export const SlideSideBar = styled.div<ISlideSideBar>`
 		flex-wrap: wrap;
 		gap: 10px;
 		overflow: hidden;
+		padding: 10px 0;
 		a {
 			flex: 1 1 100%;
 			display: flex;
@@ -47,11 +49,12 @@ export const SlideSideBar = styled.div<ISlideSideBar>`
 			text-decoration: none;
 			font-size: 18px;
 			transform-origin: center;
-			/* box-shadow: 0px 2px 1px 0 gray; */
 			cursor: pointer;
+			user-select: none;
 
 			:hover {
 				transform: scale(1.03);
+				box-shadow: 0px 0px 3px 0 gray;
 			}
 
 			span {

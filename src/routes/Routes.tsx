@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, Admin } from "../Pages";
+import { Home, Admin, ProductRegistration } from "../Pages";
 import { RoutesContainer } from "./style";
 
 type IMainRoutes = {
@@ -22,6 +22,10 @@ export const MainRoutes: FC<IMainRoutes> = ({ sideBar, footer }) => {
 						<Route
 							path="/admin"
 							element={<Admin />}
+						/>
+						<Route
+							path="/cadastro-de-produtos"
+							element={<ProductRegistration />}
 						/>
 					</Routes>
 					{footer}

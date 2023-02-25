@@ -27,7 +27,7 @@ export const Sidebar = () => {
 						<span>Home</span>
 					</Link>
 					<Link
-						to="/"
+						to="/cadastro-de-produtos"
 						onClick={() => setIsOpen(false)}>
 						<MdAddBusiness size={iconSize} />
 						<span>Cadastro de produtos</span>
