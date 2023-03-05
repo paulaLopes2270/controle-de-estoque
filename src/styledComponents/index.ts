@@ -1,1 +1,1 @@
-export * from "./CentralizerContainer";
+export * from "./CentralizerContainer"

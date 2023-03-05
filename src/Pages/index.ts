@@ -1,3 +1,1 @@
-export * from "./Home";
-export * from "./Admin";
-export * from "./ProductRegistration";
+export * from "./ProductsPage";

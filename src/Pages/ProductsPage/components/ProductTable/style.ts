@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const TableContainer = styled.div`
-	flex: 1 1;
 	display: flex;
 	overflow: auto;
 `;
@@ -10,19 +9,19 @@ export const Table = styled.table`
 	border-collapse: collapse;
 	border-radius: 4px 4px 0 0;
 	overflow: hidden;
-	min-width: 100%;
+	min-width: calc(100% - 30px);
 	max-width: 100%;
 	overflow-x: auto;
+	thead {
+		background: brown;
+		border: none;
+		border: 1px solid red;
+	}
 `;
 export const Tr = styled.tr`
 	border: 1px solid gray;
 	:hover {
 		background-color: #f5f5f5;
-	}
-	:first-child {
-		background: red;
-		border: none;
-		border: 1px solid red;
 	}
 `;
 
@@ -50,14 +49,16 @@ export const Td = styled.td<ITd>`
 	text-align: ${({ textAling }) => textAling || "center"};
 `;
 
-export const statusColors = {
+const statusColors = {
 	aboveMax: "green",
 	betweenMinAndMax: "yellow",
 	belowMin: "red",
 };
 
-interface IStatusIcon {
-	status: keyof typeof statusColors;
+export type IStatusColors = keyof typeof statusColors;
+
+export interface IStatusIcon {
+	status: IStatusColors;
 }
 
 export const StatusIcon = styled.div<IStatusIcon>`
@@ -67,3 +68,5 @@ export const StatusIcon = styled.div<IStatusIcon>`
 	background: ${({ status }) => statusColors[status] || "transparent"};
 	margin: 0 auto;
 `;
+
+export const ActionButton = styled.button``;
