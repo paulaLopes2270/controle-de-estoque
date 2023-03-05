@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const SidebarElement = styled.aside`
 	position: relative;
+	flex: 0 0 50px;
 	height: 100vh;
 	min-height: 100%;
-	min-width: 50px;
 	z-index: 1000;
 `;
 

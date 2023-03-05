@@ -7,7 +7,7 @@ import {
 	SlideSideBar,
 } from "./style";
 import { MdAddBusiness, MdHome } from "react-icons/md";
-import { IoIosHome } from "react-icons/io";
+import { BsFillPersonPlusFill } from "react-icons/bs";
 import { MenuButton } from "./components";
 
 export const Sidebar = () => {
@@ -23,14 +23,14 @@ export const Sidebar = () => {
 					<Link
 						to="/"
 						onClick={() => setIsOpen(false)}>
-						<IoIosHome size={iconSize} />
-						<span>Home</span>
+						<MdAddBusiness size={iconSize} />
+						<span>Cadastro de produtos</span>
 					</Link>
 					<Link
 						to="/cadastro-de-produtos"
 						onClick={() => setIsOpen(false)}>
-						<MdAddBusiness size={iconSize} />
-						<span>Cadastro de produtos</span>
+						<BsFillPersonPlusFill size={iconSize} />
+						<span>Fornecedores</span>
 					</Link>
 				</nav>
 			</SlideSideBar>
