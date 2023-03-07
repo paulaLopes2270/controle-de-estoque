@@ -4,7 +4,6 @@ export interface IProduct {
 	name: string;
 	price: number;
 	validity: Date;
-	image: string;
 	amount: number;
 	description: string;
 	category: string;

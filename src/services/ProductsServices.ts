@@ -1,30 +1,28 @@
 import { api } from "../api";
 import { IProduct } from "../types/IProdutct";
-import { AxiosResponse, AxiosError } from "axios";
+import { AxiosResponse, AxiosError, isAxiosError } from "axios";
 
-interface IError {
-	error: any;
-}
-
-export const getProducts = async (): Promise<
-	AxiosResponse<IProduct[] | IError>
-> => {
+export const getProducts = async () => {
 	try {
-		const response: AxiosResponse<IProduct[]> = await api.get("/products");
-		console.log("response", response);
+		const response: AxiosResponse<IProduct[]> = await api.get<IProduct[]>(
+			"/products"
+		);
+		console.log("getProducts response", response);
 		return response;
-	} catch (err: AxiosError<IProduct[]>) {
-		console.log("err", err);
-		return err;
+	} catch (error) {
+		if (isAxiosError(error)) {
+			const axiosError: AxiosError = error;
+			return axiosError;
+		} else {
+			console.log(error);
+		}
 	}
 };
 
-export const getProductByid = async (
-	id: string
-): Promise<AxiosResponse<IProduct>> => {
+export const getProductByid = async (id: string) => {
 	try {
 		const response: AxiosResponse<IProduct> = await api.get(`/products/:${id}`);
-		console.log("response", response);
+		console.log("getProductByid response", response);
 		return response;
 	} catch (err) {
 		console.log("err", err);
@@ -38,7 +36,7 @@ export const putProduct = async (updatedProduct: IProduct) => {
 			`/products/:${updatedProduct.id}`,
 			updatedProduct
 		);
-		console.log("response", response);
+		console.log("putProduct response", response);
 		return response;
 	} catch (err) {
 		console.log("err", err);
@@ -49,7 +47,7 @@ export const putProduct = async (updatedProduct: IProduct) => {
 export const postProduct = async (newProduct: IProduct) => {
 	try {
 		const response: AxiosResponse = await api.post(`/products`, newProduct);
-		console.log("response", response);
+		console.log("postProduct response", response);
 		return response;
 	} catch (err) {
 		console.log("err", err);
@@ -60,7 +58,7 @@ export const postProduct = async (newProduct: IProduct) => {
 export const deleteProduct = async (productId: string) => {
 	try {
 		const response: AxiosResponse = await api.delete(`/products/${productId}`);
-		console.log("response", response);
+		console.log("deleteProduct response", response);
 		return response;
 	} catch (err) {
 		console.log("err", err);
