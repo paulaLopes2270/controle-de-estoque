@@ -13,14 +13,25 @@ interface IModal {
 	children?: ReactNode;
 	useModal: [boolean, Dispatch<SetStateAction<boolean>>];
 	isLoading?: boolean;
+	closeModalHandleClick?: () => void;
 }
 
-export const Modal: FC<IModal> = ({ children, useModal, isLoading }) => {
+export const Modal: FC<IModal> = ({
+	children,
+	useModal,
+	isLoading,
+	closeModalHandleClick,
+}) => {
 	const [modalIsOpen, setModalIsOpen] = useModal;
+
+	const closemodal = () => {
+		setModalIsOpen(false);
+		closeModalHandleClick && closeModalHandleClick();
+	};
 
 	return (
 		<ModalElement modalIsOpen={modalIsOpen}>
-			<ModalBackground onClick={() => setModalIsOpen(false)} />
+			<ModalBackground onClick={closemodal} />
 			{isLoading ? (
 				<RotateContainer>
 					<VscLoading
@@ -30,7 +41,7 @@ export const Modal: FC<IModal> = ({ children, useModal, isLoading }) => {
 				</RotateContainer>
 			) : (
 				<ModalCard modalIsOpen={modalIsOpen}>
-					<ModalCardCloseButton onClick={() => setModalIsOpen(false)}>
+					<ModalCardCloseButton onClick={closemodal}>
 						<GrFormClose size={20} />
 					</ModalCardCloseButton>
 					{children}
